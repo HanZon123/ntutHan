@@ -13,4 +13,4 @@ int main(array<System::String ^> ^args)
 	} while (!Guess(guess));
 	return 0;
 }
-//cool
+//cool123
