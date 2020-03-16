@@ -115,21 +115,6 @@ private:
 // 看懂就可以改寫成自己的程式了
 /////////////////////////////////////////////////////////////////////////////
 
-class CBouncingBall
-{
-public:
-	CBouncingBall();
-	void LoadBitmap();		// 載入圖形
-	void OnMove();			// 移動
-	void OnShow();			// 將圖形貼到畫面
-private:
-	int x, y;				// 圖形座標
-	int floor;				// 地板的Y座標
-	bool rising;			// true表上升、false表下降
-	int initial_velocity;	// 初始速度
-	int velocity;			// 目前的速度(點/次)
-	CAnimation animation;	// 利用動畫作圖形
-};
 
 /////////////////////////////////////////////////////////////////////////////
 // 這個class為遊戲的遊戲開頭畫面物件
@@ -178,7 +163,7 @@ private:
 	CMovingBitmap	corner;		// 角落圖
 	CEraser			eraser;		// 拍子
 	CInteger		hits_left;	// 剩下的撞擊數
-	CBouncingBall   bball;		// 反覆彈跳的球
+
 
 };
 

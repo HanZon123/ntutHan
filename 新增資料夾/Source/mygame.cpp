@@ -180,6 +180,10 @@ void CEraser::OnShow()
 /////////////////////////////////////////////////////////////////////////////
 
 
+CGameStateInit::CGameStateInit(CGame *g)
+	: CGameState(g)
+{
+}
 
 void CGameStateInit::OnInit()
 {
@@ -247,7 +251,10 @@ void CGameStateInit::OnShow()
 /////////////////////////////////////////////////////////////////////////////
 
 
-
+CGameStateOver::CGameStateOver(CGame *g)
+	: CGameState(g)
+{
+}
 void CGameStateOver::OnMove()
 {
 	
@@ -277,23 +284,24 @@ void CGameStateOver::OnInit()
 
 void CGameStateOver::OnShow()
 {
-	CDC *pDC = CDDraw::GetBackCDC();			// 取得 Back Plain 的 CDC 
-	CFont f,*fp;
-	f.CreatePointFont(160,"Times New Roman");	// 產生 font f; 160表示16 point的字
-	fp=pDC->SelectObject(&f);					// 選用 font f
-	pDC->SetBkColor(RGB(0,0,0));
-	pDC->SetTextColor(RGB(255,255,0));
-	char str[80];								// Demo 數字對字串的轉換
-	sprintf(str, "Game Over ! (%d)", counter / 30);
-	pDC->TextOut(240,210,str);
-	pDC->SelectObject(fp);						// 放掉 font f (千萬不要漏了放掉)
-	CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC
+	
 }
 
 /////////////////////////////////////////////////////////////////////////////
 // 這個class為遊戲的遊戲執行物件，主要的遊戲程式都在這裡
 /////////////////////////////////////////////////////////////////////////////
 
+
+CGameStateRun::CGameStateRun(CGame *g)
+	: CGameState(g), NUMBALLS(28)
+{
+
+}
+
+CGameStateRun::~CGameStateRun()
+{
+
+}
 
 
 void CGameStateRun::OnBeginState()
@@ -324,7 +332,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 		if (hits_left.GetInteger() <= 0) {
 			CAudio::Instance()->Stop(AUDIO_LAKE);	// 停止 WAVE
 			CAudio::Instance()->Stop(AUDIO_NTUT);	// 停止 MIDI
-			GotoGameState(GAME_STATE_OVER);
+			
 		}
 	
 	//
