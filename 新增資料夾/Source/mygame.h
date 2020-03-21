@@ -79,7 +79,24 @@ protected:
 	bool isMovingRight;			// 是否正在往右移動
 	bool isMovingUp;			// 是否正在往上移動
 };
+class map
+{
+public:
+	map();
+	void Inital();
+	int  GetX();
+	int  GetY();
+	void LoadBitmap();
+	void OnMove();
+	void OnShow();
+	void SetMovingRight(bool flag);
+protected:
+	CAnimation mpanimation;
+	bool isMovingRight;
+	int world[16][4];
+	int sx, sy;
 
+};
 /////////////////////////////////////////////////////////////////////////////
 // 這個class提供繞圈圈的球
 // 看懂就可以改寫成自己的程式了
@@ -163,7 +180,7 @@ private:
 	CMovingBitmap	corner;		// 角落圖
 	CEraser			eraser;		// 拍子
 	CInteger		hits_left;	// 剩下的撞擊數
-
+	map				world_1;
 
 };
 

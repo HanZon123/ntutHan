@@ -108,6 +108,8 @@ IDB_BITMAP3             BITMAP                  "..\\RES\\background1.bmp"
 
 IDB_CHAC                BITMAP                  "..\\RES\\chac.bmp"
 
+IDB_world_1             BITMAP                  "..\\RES\\world1.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

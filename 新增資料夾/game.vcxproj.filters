@@ -155,5 +155,11 @@
     <Image Include="RES\chac.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="..\..\..\Downloads\source\world1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\world1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

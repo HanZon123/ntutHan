@@ -318,8 +318,10 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\Downloads\source\world1.bmp" />
     <Image Include="RES\background1.bmp" />
     <Image Include="RES\chac.bmp" />
+    <Image Include="RES\world1.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
