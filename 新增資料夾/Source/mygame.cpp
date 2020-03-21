@@ -121,12 +121,18 @@ void CEraser::OnMove()
 	const int STEP_VERTICAL = 20;
 	const int floor = 400;
 	const int ceiling = floor - STEP_VERTICAL * 10;
-	if (isMovingLeft)
+	if (isMovingLeft) {
 		x -= STEP_SIZE;
+		mapmoving = false;
+	}
+
 	if (isMovingRight)
 	{
-		x += STEP_SIZE;
+		if (x >= 570) { mapmoving = true; }
+		else { x += STEP_SIZE;}
 	}
+	else  mapmoving = false;
+
 	if (isMovingUp) 
 	{
 		y -= STEP_VERTICAL;
@@ -169,6 +175,11 @@ void CEraser::SetMovingUp(bool flag)
 void CEraser::SetXY(int nx, int ny)
 {
 	x = nx; y = ny;
+}
+
+bool CEraser::GetMovingSituation()
+{
+	return mapmoving;
 }
 
 void CEraser::OnShow()
@@ -374,19 +385,24 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	// 移動擦子
 	//
 
-	if (eraser.GetX1() >= 557) 
-	{
-		world_1.SetMovingRight(true);
-
-		eraser.SetMovingRight(false);
-	}
-	else if (eraser.GetX1() < 557)
-	{
-		eraser.SetMovingRight(true);
-		world_1.SetMovingRight(false);
-	}
+	
+	//if (eraser.GetMovingSituation())
+	//{
+	//	if (eraser.GetX1() >= 557)
+	//	{
+	//		world_1.SetMovingRight(true);
+	//		eraser.SetMovingRight(false);
+	//	}
+	//	else if (eraser.GetX1() < 557)
+	//	{
+	//		eraser.SetMovingRight(true);
+	//	}
+	//}
+	//else world_1.SetMovingRight(false);
+	world_1.SetMovingRight((eraser.GetMovingSituation()));
 	world_1.OnMove();
 	eraser.OnMove();
+	
 	
 	
 	//
@@ -437,14 +453,15 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
-	const char KEY_LEFT  = 0x25; // keyboard左箭頭
-	const char KEY_UP    = 0x26; // keyboard上箭頭
+	const char KEY_LEFT = 0x25; // keyboard左箭頭
+	const char KEY_UP = 0x26; // keyboard上箭頭
 	const char KEY_RIGHT = 0x27; // keyboard右箭頭
-	const char KEY_DOWN  = 0x28; // keyboard下箭頭
+	const char KEY_DOWN = 0x28; // keyboard下箭頭
 	if (nChar == KEY_LEFT)
 		eraser.SetMovingLeft(true);
-	if (nChar == KEY_RIGHT)
+	if (nChar == KEY_RIGHT) {
 		eraser.SetMovingRight(true);
+	}
 	if (nChar == KEY_UP && eraser.GetY1()==400)
 		eraser.SetMovingUp(true);
 	

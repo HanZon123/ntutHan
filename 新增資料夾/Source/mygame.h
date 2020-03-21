@@ -71,6 +71,7 @@ public:
 	void SetMovingRight(bool flag); // 設定是否正在往右移動
 	void SetMovingUp(bool flag);	// 設定是否正在往上移動
 	void SetXY(int nx, int ny);		// 設定擦子左上角座標
+	bool GetMovingSituation();
 protected:
 	CAnimation animation;		// 擦子的動畫
 	int x, y;					// 擦子左上角座標
@@ -78,6 +79,7 @@ protected:
 	bool isMovingLeft;			// 是否正在往左移動
 	bool isMovingRight;			// 是否正在往右移動
 	bool isMovingUp;			// 是否正在往上移動
+	bool mapmoving;
 };
 class map
 {
